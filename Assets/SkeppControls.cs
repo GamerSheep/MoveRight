@@ -20,7 +20,11 @@ public class SkeppControls : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        //Ger en slumpässigt movement speed
+        MovementSpeed = Random.Range(1, 11);
 
+        //Gör så att det spawnar på ett slumpmässigt ställe
+        transform.Translate(Random.Range(-9, 10), Random.Range(-4, 5), 0);
     }
 
     // Update is called once per frame
@@ -50,7 +54,7 @@ public class SkeppControls : MonoBehaviour
             transform.Rotate(0, 0, RotationSpeed *0.6f * Time.deltaTime);
             rend.color = Color.green;
         }
-        //när man håller inne S så sänks farten med 2
+        //när man håller inne S så går man hälften så fort
         if (Input.GetKeyDown(KeyCode.S))
         {
             MovementSpeed /= 2;
@@ -59,12 +63,28 @@ public class SkeppControls : MonoBehaviour
         {
             MovementSpeed *= 2;
         }
-
+        //nör man trycker på space så får skeppet en slumpmässig färg
         if (Input.GetKeyDown(KeyCode.Space))
         {
             ShipColor = new Color(Random.value, Random.value, Random.value, 1.0f);
             rend.color = ShipColor;
         }
-            
+
+       if (transform.position.x < -9)
+        {
+            transform.position = new Vector3(9, transform.position.y);
+        }
+       if (transform.position.x > 9)
+        {
+            transform.position = new Vector3(-9, transform.position.y);
+        }
+        if (transform.position.y < -5)
+        {
+            transform.position = new Vector3(transform.position.x, 5);
+        }
+        if (transform.position.y > 5)
+        {
+            transform.position = new Vector3(transform.position.x, -5);
+        }
     }
 }

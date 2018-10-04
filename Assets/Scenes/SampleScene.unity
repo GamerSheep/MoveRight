@@ -222,6 +222,7 @@ MonoBehaviour:
   RotationSpeed: 180
   rend: {fileID: 606750234}
   TimerCount: 0
+  TimerIncrease: 1
   ShipColorNumber: 0
   ShipColor: {r: 0, g: 0, b: 0, a: 0}
   RandomColor: {fileID: 606750234}
@@ -278,7 +279,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 606750232}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.054, y: -0.325, z: 0}
+  m_LocalPosition: {x: 0.72, y: -4.88, z: 0}
   m_LocalScale: {x: 2.998, y: 1.330161, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
