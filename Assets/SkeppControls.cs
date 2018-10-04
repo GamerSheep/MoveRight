@@ -10,10 +10,12 @@ public class SkeppControls : MonoBehaviour
     public SpriteRenderer rend;
     [Header("Timer")]
     public float TimerCount;
+    public int TimerIncrease = 1;
     [Header("ShipColor")]
     public int ShipColorNumber;
     public Color ShipColor;
     public SpriteRenderer RandomColor;
+    
 
     // Use this for initialization
     void Start()
@@ -29,8 +31,12 @@ public class SkeppControls : MonoBehaviour
 
         //timern tickar uppåt
         TimerCount += 1 * Time.deltaTime;
-        
-        print(TimerCount);
+
+        if (TimerCount > TimerIncrease)
+        {
+            Debug.Log(string.Format("Timer: {0}", TimerIncrease));
+            TimerIncrease += 1;
+        }
 
         //kan svänga höger och bli blå
         if (Input.GetKey(KeyCode.D))
