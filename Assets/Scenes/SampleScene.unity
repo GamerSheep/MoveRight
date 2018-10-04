@@ -218,9 +218,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b03f5600e59de9c4498b8e1f02d5b470, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MovementSpeed: 1.74
-  RotationSpeed: 227.02
+  MovementSpeed: 2
+  RotationSpeed: 180
   rend: {fileID: 606750234}
+  TimerCount: 0
+  ShipColorNumber: 0
+  ShipColor: {r: 0, g: 0, b: 0, a: 0}
+  RandomColor: {fileID: 606750234}
 --- !u!212 &606750234
 SpriteRenderer:
   m_ObjectHideFlags: 0

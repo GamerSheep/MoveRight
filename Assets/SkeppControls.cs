@@ -10,6 +10,10 @@ public class SkeppControls : MonoBehaviour
     public SpriteRenderer rend;
     [Header("Timer")]
     public float TimerCount;
+    [Header("ShipColor")]
+    public int ShipColorNumber;
+    public Color ShipColor;
+    public SpriteRenderer RandomColor;
 
     // Use this for initialization
     void Start()
@@ -37,7 +41,7 @@ public class SkeppControls : MonoBehaviour
         //kan svänga vänster och bli grön
         if (Input.GetKey(KeyCode.A))
         {
-            transform.Rotate(0, 0, RotationSpeed * Time.deltaTime);
+            transform.Rotate(0, 0, RotationSpeed *0.6f * Time.deltaTime);
             rend.color = Color.green;
         }
         //när man håller inne S så sänks farten med 2
@@ -50,6 +54,11 @@ public class SkeppControls : MonoBehaviour
             MovementSpeed *= 2;
         }
 
-
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            ShipColor = new Color(Random.value, Random.value, Random.value, 1.0f);
+            rend.color = ShipColor;
+        }
+            
     }
 }
