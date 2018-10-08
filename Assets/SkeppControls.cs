@@ -114,21 +114,21 @@ public class SkeppControls : MonoBehaviour
         }
 
         //gör så att skeppet "warpar" runt skärmen
-       if (transform.position.x < -9)
+       if (transform.position.x < -18)
         {
-            transform.position = new Vector3(9, transform.position.y);
+            transform.position = new Vector3(18, transform.position.y);
         }
-       if (transform.position.x > 9)
+       if (transform.position.x > 18)
         {
-            transform.position = new Vector3(-9, transform.position.y);
+            transform.position = new Vector3(-18, transform.position.y);
         }
-        if (transform.position.y < -5)
+        if (transform.position.y < -10)
         {
-            transform.position = new Vector3(transform.position.x, 5);
+            transform.position = new Vector3(transform.position.x, 10);
         }
-        if (transform.position.y > 5)
+        if (transform.position.y > 10)
         {
-            transform.position = new Vector3(transform.position.x, -5);
+            transform.position = new Vector3(transform.position.x, -10);
         }
         //pulsating colors
         var ratio = (Time.time - LastColorChangeTime / FadeDuration);
