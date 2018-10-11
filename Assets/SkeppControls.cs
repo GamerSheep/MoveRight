@@ -7,6 +7,7 @@ public class SkeppControls : MonoBehaviour
     [Header("ShipControls")]
     public float MovementSpeed;
     public float RotationSpeed;
+    public int SpeedIncrease;
     public SpriteRenderer Rend;
     [Header("Timer")]
     public float TimerCount;
@@ -30,6 +31,7 @@ public class SkeppControls : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        SpeedIncrease = TimerIncrease + 1;
 
         PulseColor1 = new Color(Random.value, Random.value, Random.value);
         PulseColor2 = new Color(Random.value, Random.value, Random.value);
@@ -47,8 +49,8 @@ public class SkeppControls : MonoBehaviour
 
         //gör så att skeppets sprite blir slumpmässigt
         SkeppDecider = Random.Range(1, 5);
-        
-        if(SkeppDecider == 1)
+
+        if (SkeppDecider == 1)
         {
             GetComponent<SpriteRenderer>().sprite = SkeppSprite[0];
         }
@@ -56,23 +58,37 @@ public class SkeppControls : MonoBehaviour
         {
             GetComponent<SpriteRenderer>().sprite = SkeppSprite[1];
         }
-        if(SkeppDecider == 3)
+        if (SkeppDecider == 3)
         {
             GetComponent<SpriteRenderer>().sprite = SkeppSprite[2];
         }
-        if(SkeppDecider == 4)
+        if (SkeppDecider == 4)
         {
             GetComponent<SpriteRenderer>().sprite = SkeppSprite[3];
         }
 
-        
-        
-        
+
+
+
     }
 
     // Update is called once per frame
     void Update()
     {
+        if(SpeedIncrease == TimerIncrease)
+        {
+            MovementSpeed += 1;
+            RotationSpeed += 10;
+            SpeedIncrease += 1;
+        }
+        if (MovementSpeed == 25)
+        {
+            MovementSpeed -= 1;
+            SpeedIncrease -= 1;
+            RotationSpeed -= 10;
+        }
+        
+
         //gör så att den konstant åker framåt
         transform.Translate(MovementSpeed * Time.deltaTime, 0, 0, Space.Self);
 
@@ -89,13 +105,13 @@ public class SkeppControls : MonoBehaviour
         if (Input.GetKey(KeyCode.D))
         {
             transform.Rotate(0, 0, -RotationSpeed * Time.deltaTime);
-          
+
         }
         //kan svänga vänster och bli grön
         if (Input.GetKey(KeyCode.A))
         {
-            transform.Rotate(0, 0, RotationSpeed *0.6f * Time.deltaTime);
-            
+            transform.Rotate(0, 0, RotationSpeed * 0.6f * Time.deltaTime);
+
         }
         //när man håller inne S så går man hälften så fort
         if (Input.GetKeyDown(KeyCode.S))
@@ -114,11 +130,11 @@ public class SkeppControls : MonoBehaviour
         }
 
         //gör så att skeppet "warpar" runt skärmen
-       if (transform.position.x < -18)
+        if (transform.position.x < -18)
         {
             transform.position = new Vector3(18, transform.position.y);
         }
-       if (transform.position.x > 18)
+        if (transform.position.x > 18)
         {
             transform.position = new Vector3(-18, transform.position.y);
         }
